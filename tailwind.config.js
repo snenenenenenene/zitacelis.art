@@ -11,12 +11,19 @@ module.exports = {
   darkMode: "media",
   theme: {
     extend: {
+      fontFamily: {
+        sunflower: ["Sunflower"],
+        maglony: ["Maglony"],
+        george: ["George"],
+      },
       colors: {
         light: {
-          primary: "#FFF6F0",
-          secondary: "#262523",
-          tertiary: "#c4c4c4",
-          text: "#FFFFFF",
+          primary: "#c1c1c1",
+          // primary: "#304532",
+          // primary: "#EBD4C8",
+          secondary: "#ffffff",
+          tertiary: "#262523",
+          text: "#92620B",
           accent: "#4444a0",
         },
         dark: {

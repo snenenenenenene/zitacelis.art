@@ -1,3 +1,3 @@
 export default function Shop() {
-  return <div className="text-9xl mt-10 text-black">Shop</div>;
+  return <div className="text-9xl p-10 text-black font-sunflower">WIP</div>;
 }

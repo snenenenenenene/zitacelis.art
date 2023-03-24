@@ -1,6 +1,6 @@
 import { images } from "@/data/images";
 import Image from "next/image";
-export default function Page(context: any) {
+export default function Project(context: any) {
   const name = context.params.name;
 
   const collection = images.find((image) => image.title === name);

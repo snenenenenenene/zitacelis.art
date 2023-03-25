@@ -8,29 +8,31 @@ import ReactCurvedText from "react-curved-text";
 export default function Home() {
   const Img = ({ className, index }: { className: string; index: any }) => {
     return (
-      <Link href={`/work/${collections[index]?.title}`}>
-        <picture
-          className={`${className} hover:scale-125 hover:z-50 hover:shadow-2xl transition-all duration-500 cursor-pointer  absolute border rounded-full border-black overflow-hidden`}
-        >
-          <img
-            src={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
-            alt={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
-            className="object-cover w-full h-full absolute inset-0"
-          />
-          <section className="absolute bottom-0 left-1/2 -translate-x-1/2 mb-10">
-            <ReactCurvedText
-              width={200}
-              height={200}
-              cx={10}
-              cy={10}
-              rx={80}
-              ry={116}
-              startOffset="0"
-              text="LOAAALOL"
+      <picture
+        className={`${className} bg-black hover:scale-125 hover:z-50 hover:shadow-2xl transition-all duration-500 cursor-pointer  absolute border rounded-full border-black overflow-hidden`}
+      >
+        {collections?.length > 0 && (
+          <Link href={`/work/${collections[index]?.title}`}>
+            <img
+              src={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
+              alt={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
+              className="object-cover w-full h-full absolute inset-0"
             />
-          </section>
-        </picture>
-      </Link>
+            <section className="absolute bottom-0 left-1/2 -translate-x-1/2 mb-10">
+              <ReactCurvedText
+                width={200}
+                height={200}
+                cx={10}
+                cy={10}
+                rx={80}
+                ry={116}
+                startOffset="0"
+                text="LOAAALOL"
+              />
+            </section>
+          </Link>
+        )}
+      </picture>
     );
   };
 
@@ -74,7 +76,7 @@ export default function Home() {
         data-scroll
         data-scroll-speed="3"
         data-name="outside"
-        className="w-[18rem] md:w-[25rem] h-[15rem] md:h-[15rem] bottom-[2rem] left-[18rem] md:left-[30rem]"
+        className="w-[18rem] md:w-[25rem] h-[15rem] md:h-[15rem] bottom-[2rem] left-[18rem] md:left-[2rem] lg:left-[3rem] xl:left-[30rem]"
         index={4}
       />
       <Img

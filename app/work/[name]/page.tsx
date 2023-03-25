@@ -21,32 +21,40 @@ export default function Page(context: any) {
   }, []);
 
   return (
-    <main className="flex flex-col bg-black w-full overflow-scroll   text-black font-sunflower">
+    <main className="flex flex-col bg-black w-full overflow-scroll h-full text-black font-sunflower">
       {collection && (
         <>
-          <nav className="flex items-center justify-center pb-8 bg-black text-white">
+          <nav className="flex items-center justify-center w-screen pb-8 bg-black text-white">
             <h1 className="text-6xl underline lowercase ">
-              {collection?.title}
+              {Object.keys(collection).length !== 0 ? (
+                collection?.title
+              ) : (
+                <>loading</>
+              )}
             </h1>
           </nav>
-          <section className="w-full pt-10 md:pt-20 bg-white rounded-xl pb-20 px-10 md:px-20 grid md:grid-cols-3 grid-cols-1 gap-6">
-            {collection?.expand?.images?.map((image: any, index: number) => (
-              <picture
-                onClick={() => {
-                  setModalData(image);
-                  setShowModal(true);
-                }}
-                className="w-full h-full hover:scale-105 overflow-hidden cursor-pointer transition-all duration-500"
-                key={index}
-              >
-                <img
-                  loading="lazy"
-                  className="w-full h-full object-cover filter grayscale hover:filter-none transition-all duration-1000"
-                  alt={image?.title}
-                  src={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${image?.id}/${image?.src}`}
-                />
-              </picture>
-            ))}
+          <section className="w-full pt-10 md:pt-20 bg-white h-screen rounded-xl pb-20 px-10 md:px-20 grid md:grid-cols-3 grid-cols-1 gap-6">
+            {Object.keys(collection).length !== 0 ? (
+              collection?.expand?.images?.map((image: any, index: number) => (
+                <picture
+                  onClick={() => {
+                    setModalData(image);
+                    setShowModal(true);
+                  }}
+                  className="w-full h-full hover:scale-105 overflow-hidden cursor-pointer transition-all duration-500"
+                  key={index}
+                >
+                  <img
+                    loading="lazy"
+                    className="w-full h-full object-cover filter grayscale hover:filter-none transition-all duration-1000"
+                    alt={image?.title}
+                    src={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${image?.id}/${image?.src}`}
+                  />
+                </picture>
+              ))
+            ) : (
+              <section></section>
+            )}
           </section>
           {showModal && (
             <div

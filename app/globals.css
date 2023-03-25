@@ -28,9 +28,34 @@ html {
     font-size: 13.5px;
   }
 }
-@media (min-width: 1280px) {
+
+@media (min-width: 1300px) {
   html {
     font-size: 16px;
+  }
+}
+
+@media (min-width: 1500px) {
+  html {
+    font-size: 19px;
+  }
+}
+
+@media (min-width: 1800px) {
+  html {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 2000px) {
+  html {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 2273px) {
+  html {
+    font-size: 25px;
   }
 }
 

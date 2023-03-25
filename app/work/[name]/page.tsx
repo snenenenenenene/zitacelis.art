@@ -2,11 +2,10 @@
 import PocketBase from "pocketbase";
 import { useEffect, useState } from "react";
 
+//@ts-ignore
 export default function ProjectPage(context: any) {
   const name = context.params.name;
-
   const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKET_BASE_URL);
-
   const [collection, setCollection]: any = useState({});
 
   useEffect(() => {

@@ -1,19 +1,36 @@
 "use client";
+import Link from "next/link";
 import PocketBase from "pocketbase";
 import { useEffect, useState } from "react";
+//@ts-ignore
+import ReactCurvedText from "react-curved-text";
 
 export default function Home() {
   const Img = ({ className, index }: { className: string; index: any }) => {
     return (
-      <picture
-        className={`${className} absolute overflow-hidden border-2 border-light-tertiary rounded`}
-      >
-        <img
-          src={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
-          alt={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
-          className="object-cover w-full h-full"
-        />
-      </picture>
+      <Link href={`/work/${collections[index]?.title}`}>
+        <picture
+          className={`${className} hover:scale-125 hover:z-50 hover:shadow-2xl transition-all duration-500 cursor-pointer  absolute border rounded-full border-black overflow-hidden`}
+        >
+          <img
+            src={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
+            alt={`https://zita-website.pockethost.io/api/files/6w4ddsf4nwbdis4/${collections[index]?.expand.cover?.id}/${collections[index]?.expand.cover?.src}`}
+            className="object-cover w-full h-full absolute inset-0"
+          />
+          <section className="absolute bottom-0 left-1/2 -translate-x-1/2 mb-10">
+            <ReactCurvedText
+              width={200}
+              height={200}
+              cx={10}
+              cy={10}
+              rx={80}
+              ry={116}
+              startOffset="0"
+              text="LOAAALOL"
+            />
+          </section>
+        </picture>
+      </Link>
     );
   };
 
@@ -36,49 +53,46 @@ export default function Home() {
   }, []);
 
   return (
-    <div
-      className="flex w-screen h-screen relative overflow-y-scroll "
-      data-scroll-container
-    >
-      <h1 className="text-[14rem] font-outline-4 top-1/2 left-1/2 text-light-secondary -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower absolute leading-[10.5rem] w-[30rem] text-center flex justify-center items-center">
+    <>
+      <h1 className="text-[14rem] top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower absolute leading-[11.5rem] w-[30rem] text-center flex justify-center items-center">
         Zita Celis
       </h1>
       <Img
         data-scroll
         data-scroll-speed="1"
-        className="w-[40rem] h-[24rem] top-[0rem] left-[0rem]"
-        index={0}
+        className="w-[35rem] h-[20rem] top-[5rem] left-[5rem]"
+        index={6}
       />
       <Img
         data-scroll
-        data-scroll-speed="2"
-        className="w-96 h-96 top-[30rem] left-[13rem]"
+        data-scroll-speed="4"
+        className="w-[30rem] h-[30rem] top-[30rem] left-[4rem]"
         index={5}
       />
       <Img
         data-scroll
-        data-scroll-speed="30"
-        className="w-96 h-96 top-[60rem] left-[2rem]"
+        data-scroll-speed="3"
+        className="w-[25rem] h-[15rem] bottom-[2rem] left-[40rem]"
         index={4}
       />
       <Img
         data-scroll
-        data-scroll-speed="2"
-        className="w-[20rem] h-[30rem] top-[5rem] right-[5rem]"
+        data-scroll-speed="1"
+        className="w-[20rem] h-[40rem] top-[3rem] right-[5rem]"
         index={3}
       />
       <Img
         data-scroll
         data-scroll-speed="5"
-        className="w-[20rem] h-96 top-[40rem] right-[10rem]"
-        index={6}
+        className="w-[20rem] h-[20rem] bottom-[2rem] right-[20rem]"
+        index={0}
       />
       <Img
         data-scroll
         data-scroll-speed="10"
-        className="w-[15rem] h-[15rem] top-[55em] right-[35rem]"
+        className="w-[20rem] h-[20rem] top-[2rem] right-[35rem]"
         index={2}
       />
-    </div>
+    </>
   );
 }

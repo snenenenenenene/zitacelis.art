@@ -1,5 +1,6 @@
 import { images } from "@/data/images";
 import Image from "next/image";
+
 export default function Project(context: any) {
   const name = context.params.name;
 

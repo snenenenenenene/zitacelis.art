@@ -19,13 +19,13 @@ html {
 
 @layer base {
   .font-outline-2 {
-    -webkit-text-stroke: 1.5px #262523;
+    -webkit-text-stroke: 1.5px white;
   }
   .font-outline-0 {
-    -webkit-text-stroke: 0px #262523;
+    -webkit-text-stroke: 0px white;
   }
   .font-outline-4 {
-    -webkit-text-stroke: 7px #262523;
+    -webkit-text-stroke: 7px white;
   }
 
   .font-outline-dark-2 {
@@ -53,9 +53,8 @@ html {
   src: url("../public/assets/fonts/made_sunflower/MADE\ Sunflower\ PERSONAL\ USE.otf");
 }
 
-/*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
 html.has-scroll-smooth {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 html.has-scroll-dragging {
@@ -66,11 +65,11 @@ html.has-scroll-dragging {
 }
 
 .has-scroll-smooth body {
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .has-scroll-smooth [data-scroll-container] {
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 [data-scroll-direction="horizontal"] [data-scroll-container] {

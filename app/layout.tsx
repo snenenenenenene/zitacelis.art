@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-dark-primary overflow-hidden relative p-[3rem] w-screen h-screen dark:bg-dark-primary text-light-secondary dark:text-dark-secondary">
-        <nav className="fixed inset-0 w-screen h-[3rem] px-[3rem] items-center text-white text-3xl font-sunflower flex">
+        <nav className="fixed md:justify-start justify-between  inset-0 w-screen h-[3rem] px-[3rem] items-center text-white text-3xl font-sunflower flex">
           <Link
             href="/shop"
             className="hover:bg-white px-8 py-3 rounded-xl hover:text-black transition-colors duration-500"

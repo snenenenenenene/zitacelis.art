@@ -29,7 +29,7 @@ export default function Page(context: any) {
               {collection?.title}
             </h1>
           </nav>
-          <section className="w-full pt-20 bg-white rounded-xl pb-20 px-20 grid md:grid-cols-3 grid-cols-3 gap-6">
+          <section className="w-full pt-10 md:pt-20 bg-white rounded-xl pb-20 px-10 md:px-20 grid md:grid-cols-3 grid-cols-1 gap-6">
             {collection?.expand?.images?.map((image: any, index: number) => (
               <picture
                 onClick={() => {

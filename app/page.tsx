@@ -54,43 +54,48 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="text-[8rem] top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower absolute leading-[6rem] w-[30rem] text-center flex justify-center items-center">
+      <h1 className="text-[8rem] top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower fixed leading-[6rem] w-[35rem] md:w-[30rem] text-center flex justify-center items-center">
         Zita Celis
       </h1>
       <Img
         data-scroll
         data-scroll-speed="1"
-        className="w-[35rem] h-[20rem] top-[2rem] left-[2rem]"
+        className="md:w-[35rem] w-[18rem] h-[17rem] md:h-[20rem] top-[14rem] md:top-[2rem] left-[2rem]"
         index={6}
       />
       <Img
         data-scroll
+        data-name="outside"
         data-scroll-speed="4"
-        className="w-[20rem] h-[20rem] top-[25rem] left-[4rem]"
+        className="w-[15rem] h-[15rem] md:w-[20rem] md:h-[20rem] top-[45rem] md:top-[25rem] left-[4.5rem] md:left-[4rem]"
         index={5}
       />
       <Img
         data-scroll
         data-scroll-speed="3"
-        className="w-[25rem] h-[15rem] bottom-[2rem] left-[30rem]"
+        data-name="outside"
+        className="w-[18rem] md:w-[25rem] h-[15rem] md:h-[15rem] bottom-[2rem] left-[18rem] md:left-[30rem]"
         index={4}
       />
       <Img
         data-scroll
         data-scroll-speed="1"
-        className="w-[20rem] h-[30rem] top-[3rem] right-[1rem]"
+        data-name="scary"
+        className=" w-[15rem] md:w-[20rem] h-[20rem] md:h-[30rem] top-[3rem] -right-[3rem] md:right-[1rem]"
         index={3}
       />
       <Img
         data-scroll
         data-scroll-speed="5"
+        data-name="flora"
         className="w-[14rem] h-[14rem] bottom-[2rem] right-[16rem]"
         index={0}
       />
       <Img
         data-scroll
         data-scroll-speed="10"
-        className="w-[12rem] h-[12rem] top-[2rem] right-[30rem]"
+        data-name="fauna"
+        className="w-[12rem] h-[12rem] top-[45rem] md:top-[2rem] right-[1rem] md:right-[30rem]"
         index={2}
       />
     </>

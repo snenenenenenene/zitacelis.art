@@ -15,6 +15,23 @@
 }
 html {
   scroll-behavior: smooth;
+  font-size: 10px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 13;
+  }
+}
+@media (min-width: 1024px) {
+  html {
+    font-size: 13.5px;
+  }
+}
+@media (min-width: 1280px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 @layer base {

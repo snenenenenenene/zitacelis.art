@@ -54,43 +54,43 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="text-[14rem] top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower absolute leading-[11.5rem] w-[30rem] text-center flex justify-center items-center">
+      <h1 className="text-[8rem] top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower absolute leading-[6rem] w-[30rem] text-center flex justify-center items-center">
         Zita Celis
       </h1>
       <Img
         data-scroll
         data-scroll-speed="1"
-        className="w-[35rem] h-[20rem] top-[5rem] left-[5rem]"
+        className="w-[35rem] h-[20rem] top-[2rem] left-[2rem]"
         index={6}
       />
       <Img
         data-scroll
         data-scroll-speed="4"
-        className="w-[30rem] h-[30rem] top-[30rem] left-[4rem]"
+        className="w-[20rem] h-[20rem] top-[25rem] left-[4rem]"
         index={5}
       />
       <Img
         data-scroll
         data-scroll-speed="3"
-        className="w-[25rem] h-[15rem] bottom-[2rem] left-[40rem]"
+        className="w-[25rem] h-[15rem] bottom-[2rem] left-[30rem]"
         index={4}
       />
       <Img
         data-scroll
         data-scroll-speed="1"
-        className="w-[20rem] h-[40rem] top-[3rem] right-[5rem]"
+        className="w-[20rem] h-[30rem] top-[3rem] right-[1rem]"
         index={3}
       />
       <Img
         data-scroll
         data-scroll-speed="5"
-        className="w-[20rem] h-[20rem] bottom-[2rem] right-[20rem]"
+        className="w-[14rem] h-[14rem] bottom-[2rem] right-[16rem]"
         index={0}
       />
       <Img
         data-scroll
         data-scroll-speed="10"
-        className="w-[20rem] h-[20rem] top-[2rem] right-[35rem]"
+        className="w-[12rem] h-[12rem] top-[2rem] right-[30rem]"
         index={2}
       />
     </>

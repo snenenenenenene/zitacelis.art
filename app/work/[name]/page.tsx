@@ -1,9 +1,12 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
 import PocketBase from "pocketbase";
 import { useEffect, useState } from "react";
 export default function Page(context: any) {
   const name = context.params.name;
-  const pb = new PocketBase(process.env.NEXT_PUBLIC_POCKET_BASE_URL);
+  const pb = new PocketBase(
+    process.env.NEXT_PUBLIC_POCKET_BASE_URL
+  ).autoCancellation(false);
   const [collection, setCollection]: any = useState({});
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData]: any = useState({});
@@ -21,15 +24,30 @@ export default function Page(context: any) {
   }, []);
 
   return (
-    <main className="flex flex-col bg-black w-full overflow-scroll h-full text-black font-sunflower">
+    <main className="flex flex-col bg-black h-full w-full text-black font-sunflower">
+      <AnimatePresence>
+        {Object.keys(collection).length === 0 && (
+          <motion.div
+            initial={{ y: "13%" }}
+            animate={{ y: "100%" }}
+            exit={{
+              y: "100%",
+              opacity: 0,
+              transition: { duration: 0.2 },
+            }}
+            transition={{ duration: 0.5 }}
+            className={`top-0 fixed left-0 w-screen h-screen z-50 bg-black`}
+          />
+        )}
+      </AnimatePresence>
       {collection && (
         <>
-          <nav className="flex items-center justify-center w-screen pb-8 bg-black text-white">
+          <nav className="flex items-center justify-center w-full pb-8 bg-black text-white">
             <h1 className="text-6xl underline lowercase ">
               {Object.keys(collection).length !== 0 ? (
                 collection?.title
               ) : (
-                <>loading</>
+                <p className="w-full">loading</p>
               )}
             </h1>
           </nav>
@@ -41,7 +59,7 @@ export default function Page(context: any) {
                     setModalData(image);
                     setShowModal(true);
                   }}
-                  className="w-full h-full hover:scale-105 overflow-hidden cursor-pointer transition-all duration-500"
+                  className="w-full max-h-[32rem] h-full hover:scale-105 overflow-hidden cursor-pointer transition-all duration-500"
                   key={index}
                 >
                   <img

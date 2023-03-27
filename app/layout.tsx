@@ -5,6 +5,7 @@ import { GiBleedingEye } from "react-icons/gi";
 import "./globals.css";
 
 export const metadata = {
+  title: "Zita Celis",
   generator: "Next.js",
   applicationName: "Zita Celis",
   keywords: ["Senne Bels", "Photography", "Portfolio"],

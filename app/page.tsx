@@ -12,7 +12,7 @@ export default function Home() {
   const Img = ({ className, index }: { className: string; index: any }) => {
     return (
       <picture
-        className={`${className} bg-black hover:scale-125 hover:z-50 hover:shadow-2xl transition-all duration-500 cursor-pointer  absolute border rounded-full border-black overflow-hidden`}
+        className={`${className} bg-black hover:scale-105 hover:filter-none grayscale hover:z-50 hover:shadow-2xl transition-all duration-500 cursor-pointer  absolute border rounded-full border-black overflow-hidden`}
       >
         {collections?.length > 0 && (
           <Link href={`/work/${collections[index]?.title}`}>
@@ -113,7 +113,7 @@ export default function Home() {
       />
       <Img
         data-name="outside"
-        className="w-[15rem] h-[15rem] md:w-[20rem] md:h-[20rem] top-[45rem] md:top-[25rem] left-[4.5rem] md:left-[4rem]"
+        className="w-[15rem] h-[15rem] md:w-[20rem] md:h-[20rem] bottom-[20rem] md:top-[25rem] left-[4.5rem] md:left-[4rem]"
         index={5}
       />
       <Img
@@ -128,7 +128,7 @@ export default function Home() {
       />
       <Img
         data-name="flora"
-        className="w-[14rem] h-[14rem] bottom-[2rem] right-[16rem]"
+        className="w-[14rem] h-[14rem] bottom-[2rem] left-[2rem] md:right-[16rem]"
         index={0}
       />
       <Img

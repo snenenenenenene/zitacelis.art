@@ -61,7 +61,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <GiBleedingEye className="font-outline-4 text-white hover:text-purple-300 transition-all duration-700 hover:scale-105 hover:rotate-12" />
           </Link>
         </nav>
-        <div className="bg-white overflow-y-scroll rounded-xl flex w-full h-full relative">
+        <div className="bg-white  rounded-xl flex w-full h-full relative">
           {children}
         </div>
       </body>

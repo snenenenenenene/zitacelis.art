@@ -34,17 +34,6 @@ export default function Home() {
   useEffect(() => {
     if (collections.length > 0) return;
     fetch();
-    console.log(collections);
-    animate(scope?.current, {
-      y: "100%",
-      transition: { duration: 20.5 },
-      transitionEnd: {
-        display: "none",
-      },
-      onAnimationEnd: {
-        display: "none",
-      },
-    });
   }, []);
 
   return (

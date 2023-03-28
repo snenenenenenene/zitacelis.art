@@ -6,18 +6,13 @@ export default function Shop() {
   return (
     <div className="text-9xl p-10 text-black font-sunflower">
       <motion.div
-        initial={{ y: "13%" }}
+        initial={{ y: "0%" }}
         animate={{ y: "100%" }}
-        exit={{
-          y: "100%",
-          opacity: 0,
-          transition: { duration: 0.2 },
-        }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 2 }}
         className={`top-0 fixed left-0 w-screen h-screen z-50 bg-black`}
       />
 
-      <div className="page-container text-lg font-george flex">
+      <div className="text-lg font-george flex">
         <Products />
       </div>
     </div>

@@ -18,8 +18,13 @@ export default function Contact() {
   }, []);
 
   return (
-    <main className="w-full p-10 text-black flex sm:flex-row flex-col">
-      <motion.div
+    <motion.main
+      initial={{ y: "10%", opacity: 0 }}
+      animate={{ y: "0%", opacity: 1 }}
+      transition={{ duration: 1 }}
+      className="w-full p-10 text-black flex sm:flex-row flex-col"
+    >
+      {/* <motion.div
         initial={{ y: "13%" }}
         animate={{ y: "100%" }}
         exit={{
@@ -29,7 +34,7 @@ export default function Contact() {
         }}
         transition={{ duration: 0.5 }}
         className={`top-0 fixed left-0 w-screen h-screen z-50 bg-black`}
-      />
+      /> */}
       <section className="flex flex-col w-full">
         <h1 className="text-4xl font-sunflower mb-4">Contact me</h1>
         <a
@@ -63,7 +68,7 @@ export default function Contact() {
         <picture className="mx-auto w-full h-full rounded-xl overflow-hidden">
           <img
             alt="me"
-            src="/assets/1.jpg"
+            src="/assets/2.jpeg"
             className="w-full h-full object-cover filter grayscale hover:filter-none transition-all duration-1000"
           />
         </picture>
@@ -86,6 +91,6 @@ export default function Contact() {
           </motion.div>
         )}
       </AnimatePresence>
-    </main>
+    </motion.main>
   );
 }

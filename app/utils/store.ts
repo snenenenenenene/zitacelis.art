@@ -3,6 +3,7 @@ import PocketBase from "pocketbase";
 import { create } from "zustand";
 interface Store {
   collections: Array<any>[];
+  products: Array<any>[];
   fetch: () => Promise<void>;
 }
 
@@ -17,7 +18,19 @@ export const useStore = create(
     (set, get) =>
       ({
         collections: [],
+        products: [],
         fetch: async () => {
+          await pb
+            .collection("products")
+            .getFullList()
+            .then((res: any) => {
+              console.log(res);
+              set({ products: res });
+            })
+            .catch((err) => {
+              console.error(err);
+            });
+
           await pb
             .collection("collections")
             .getFullList({

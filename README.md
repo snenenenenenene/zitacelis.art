@@ -1,6 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Photography Portfolio Website
 
-## Getting Started
+This is a portfolio website for showcasing photography work, built with Next.js 13, Stripe for donations and product purchases, Zustand as a state manager, Vercel for deployment, and Pocketbase as a database. The website is hosted at (https://www.zitacelis.art/)[https://www.zitacelis.art/].
+
+## Features
+
+- **Home page**: showcases a hero image with a call to action for visitors to view the portfolio, and displays the latest blog post.
+- **About page**: provides a brief bio and introduction of the photographer.
+- **Portfolio page**: displays a grid of photography work, which can be filtered by categories.
+- **Product page**: displays a selection of prints that can be purchased through Stripe integration.
+- **Donation page**: provides a form for visitors to donate to the photographer through Stripe integration.
+- **Blog page**: displays a list of blog posts, with a read more button to view the full post.
+- **Contact page**: provides a form for visitors to contact the photographer.
+- **Authentication system**: allows the photographer to log in and edit the content of the website, including adding new blog posts, managing the portfolio, and adding/editing products.
+- **State management**: Zustand is used as a state manager to handle the authentication state and the state of the shopping cart.
+- **Database**: Pocketbase is used as a database to store the photography work and blog posts.
+
+## Setting it up
 
 First, run the development server:
 
@@ -13,26 +28,3 @@ pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

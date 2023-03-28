@@ -21,14 +21,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <Head>
-        <link rel="shortcut icon" href="assets/sun.ico" />
+        <link rel="shortcut icon" href="assets/favicon.ico" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="" />
+        <meta name="twitter:site" content="https://www.zitacelis.art" />
         <meta name="twitter:title" content="zitacelis.art" />
         <meta name="twitter:description" content="Photofolio" />
         <meta
           name="twitter:image"
-          content="https://sennebels.xyz/assets/images/twitter-pic.png"
+          content="blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60"
         />
         <meta name="twitter:site" content="@zitacelis" />
         <meta name="twitter:creator" content="@zitacelis" />
@@ -38,7 +38,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <meta property="og:description" content="Photofolio" />
         <meta
           property="og:image"
-          content="https://sennebels.xyz/assets/images/twitter-pic.png"
+          content="blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60"
         />
       </Head>
       <body className="bg-dark-primary overflow-hidden relative p-[3rem] w-screen h-screen dark:bg-dark-primary text-light-secondary dark:text-dark-secondary">

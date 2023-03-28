@@ -3,6 +3,7 @@ import { CartProvider } from "use-shopping-cart";
 import * as config from "../config/config";
 import getStripe from "../utils/get-stripejs";
 
+//TODO: switch to zustand
 const Cart = ({ children }: { children: ReactNode }) => (
   <CartProvider
     // mode="checkout-session"

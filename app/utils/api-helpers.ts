@@ -1,8 +1,9 @@
+//TODO: Move away from using fetch
 export async function fetchGetJSON(url: string) {
   try {
     const data = await fetch(url).then((res) => res.json());
     return data;
-  } catch (err) {
+  } catch (err: any) {
     throw new Error(err.message);
   }
 }

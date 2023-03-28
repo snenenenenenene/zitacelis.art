@@ -7,6 +7,9 @@ interface Store {
   cart: Array<any>[];
   totalPrice: number;
   addToCart: (product: any) => void;
+  openCart: boolean;
+  toggleOpenCart: () => void;
+
   removeFromCart: (product: any) => void;
   cartCount: number;
   clearCart: () => void;
@@ -24,6 +27,10 @@ export const useStore = create(
     (set: any, get: any) =>
       ({
         collections: [],
+        openCart: false,
+        toggleOpenCart: () => {
+          set((state: any) => ({ openCart: !state.openCart }));
+        },
         products: [],
         cart: [],
         cartCount: 0,

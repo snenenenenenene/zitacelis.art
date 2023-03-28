@@ -23,7 +23,7 @@ export async function POST(request: Request) {
       success_url: `${request.headers.get(
         "origin"
       )}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${request.headers.get("origin")}/shop/cart`,
+      cancel_url: `${request.headers.get("origin")}/shop`,
     };
     return await stripe.checkout.sessions
       .create(params)
@@ -31,6 +31,7 @@ export async function POST(request: Request) {
         return NextResponse.json(checkoutSession);
       });
   } catch (err: any) {
+    console.log(err);
     return NextResponse.json({ statusCode: 500, message: err.message });
   }
 }

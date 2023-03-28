@@ -5,8 +5,10 @@ import getStripe from "../utils/get-stripejs";
 
 const Cart = ({ children }: { children: ReactNode }) => (
   <CartProvider
-    mode="checkout-session"
+    // mode="checkout-session"
+    // @ts-ignore
     stripe={getStripe()}
+    shouldPersist={true}
     currency={config.CURRENCY}
   >
     <>{children}</>

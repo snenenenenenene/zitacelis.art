@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Link from "next/link";
 import { ReactNode } from "react";
 import { GiBleedingEye } from "react-icons/gi";
@@ -80,27 +79,6 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <Head>
-        <link rel="shortcut icon" href="assets/favicon.ico" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:site" content="https://www.zitacelis.art" />
-        <meta name="twitter:title" content="zitacelis.art" />
-        <meta name="twitter:description" content="Photofolio" />
-        <meta
-          name="twitter:image"
-          content="blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60"
-        />
-        <meta name="twitter:site" content="@zitacelis" />
-        <meta name="twitter:creator" content="@zitacelis" />
-        <meta property="og:url" content="https://www.zitacelis.art" />
-        <meta property="og:type" content="article" />
-        <meta property="og:title" content="zitacelis.art" />
-        <meta property="og:description" content="Photofolio" />
-        <meta
-          property="og:image"
-          content="blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60"
-        />
-      </Head>
       <body className="bg-dark-primary overflow-hidden relative p-[3rem] w-screen h-screen dark:bg-dark-primary text-light-secondary dark:text-dark-secondary">
         <nav className="fixed md:justify-start justify-between gap-x-4 inset-0 w-screen h-[3rem] px-[3rem] items-center text-white text-3xl font-sunflower flex">
           <Link

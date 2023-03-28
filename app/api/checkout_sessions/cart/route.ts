@@ -1,15 +1,5 @@
-/*
- * Product data can be loaded from anywhere. In this case, we’re loading it from
- * a local JSON file, but this could also come from an async call to your
- * inventory management service, a database query, or some other API call.
- *
- * The important thing is that the product info is loaded from somewhere trusted
- * so you know the pricing information is accurate.
- */
-
 import Stripe from "stripe";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  // https://github.com/stripe/stripe-node#configuration
   apiVersion: "2022-11-15",
 });
 
@@ -32,7 +22,7 @@ export async function POST(request: Request) {
       line_items: line_items,
       success_url: `${request.headers.get(
         "origin"
-      )}/shop/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+      )}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${request.headers.get("origin")}/shop/cart`,
     };
     return await stripe.checkout.sessions

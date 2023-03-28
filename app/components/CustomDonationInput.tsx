@@ -1,6 +1,6 @@
+"use client";
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { formatAmountForDisplay } from "../utils/stripe-helpers";
 
 type Props = {
   name: string;
@@ -22,30 +22,31 @@ const CustomDonationInput = ({
   step,
   onChange,
   className,
-}: Props) => (
-  <label className="flex flex-col">
-    Custom donation amount ({formatAmountForDisplay(min, currency)}-
-    {formatAmountForDisplay(max, currency)}):
-    <input
-      className={className}
-      type="number"
-      name={name}
-      value={value}
-      min={min}
-      max={max}
-      step={step}
-      onChange={onChange}
-    ></input>
-    <input
-      type="range"
-      name={name}
-      value={value}
-      min={min}
-      max={max}
-      step={step}
-      onChange={onChange}
-    ></input>
-  </label>
-);
+}: Props) => {
+  const [isFocused, setIsFocused] = React.useState(false);
+  const formatter = new Intl.NumberFormat("be-NL", {
+    style: "decimal",
+  });
+
+  return (
+    <span className={className}>
+      <span className="bg-black text-white font-sunflower left-0 top-0 w-[5rem] h-full flex pl-8 items-center">
+        {currency === "eur" ? "€" : "$"}
+      </span>
+      <input
+        type={isFocused ? "number" : "text"}
+        name={name}
+        value={isFocused ? value : formatter.format(value)}
+        min={min}
+        max={max}
+        step={step}
+        onBlur={() => setIsFocused(false)}
+        onFocus={() => setIsFocused(true)}
+        className="w-full font-george focus:outline-none focus:border-2 transition-all duration-500 border-black h-full text-center"
+        onChange={onChange}
+      />
+    </span>
+  );
+};
 
 export default CustomDonationInput;

@@ -5,7 +5,6 @@ import CustomDonationInput from "../components/CustomDonationInput";
 import * as config from "../config/config";
 import { fetchPostJSON } from "../utils/api-helpers";
 import getStripe from "../utils/get-stripejs";
-import { formatAmountForDisplay } from "../utils/stripe-helpers";
 
 const CheckoutForm = () => {
   const [loading, setLoading] = useState(false);
@@ -40,9 +39,9 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form className="flex flex-col" onSubmit={handleSubmit}>
+    <form className="flex mt-auto text-xl w-full pr-10" onSubmit={handleSubmit}>
       <CustomDonationInput
-        className="checkout-style"
+        className="border-2 border-black relative overflow-hidden w-full flex justify-center items-center text-center rounded-l-xl"
         name={"customDonation"}
         value={input.customDonation}
         min={config.MIN_AMOUNT}
@@ -52,11 +51,14 @@ const CheckoutForm = () => {
         onChange={handleInputChange}
       />
       <button
-        className="checkout-style-background"
+        className="w-full font-sunflower bg-black rounded-r-xl h-[5rem] text-white"
         type="submit"
         disabled={loading}
       >
-        Donate {formatAmountForDisplay(input.customDonation, config.CURRENCY)}
+        <span>
+          Buy me {Math.round(input.customDonation / 3.5)}
+          &nbsp;coffees
+        </span>
       </button>
     </form>
   );

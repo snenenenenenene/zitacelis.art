@@ -11,11 +11,9 @@ export async function POST(request: Request) {
   const body = await request.json();
   const amount: number = body.amount;
   try {
-    // Validate the amount that was passed from the client.
     if (!(amount >= MIN_AMOUNT && amount <= MAX_AMOUNT)) {
       throw new Error("Invalid amount.");
     }
-    // Create Checkout Sessions from body params.
     const params: Stripe.Checkout.SessionCreateParams = {
       submit_type: "donate",
       payment_method_types: ["card", "bancontact", "ideal"],
@@ -35,7 +33,7 @@ export async function POST(request: Request) {
       ],
       success_url: `${request.headers.get(
         "origin"
-      )}/contact/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+      )}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${request.headers.get("origin")}/contact`,
     };
 

@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Stripe from "stripe";
-import inventory from "../../data/products.json";
+import inventory from "../data/products.json";
 export default function Success(context: any) {
   const sessionId = context.searchParams.session_id;
   type TSession = Stripe.Response<Stripe.Checkout.Session>;
@@ -27,6 +27,7 @@ export default function Success(context: any) {
         console.log(err);
       });
   }, []);
+
   useEffect(() => {
     axios
       .get(`/api/session/${sessionId}/line_items`)

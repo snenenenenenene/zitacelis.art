@@ -24,6 +24,11 @@ export const metadata = {
     creator: "@zitacelis",
     images: [
       {
+        url: "https://nextjs.org/og.png",
+        width: 800,
+        height: 600,
+      },
+      {
         url: "blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60",
         width: 800,
         height: 600,
@@ -40,6 +45,9 @@ export const metadata = {
   publisher: "Senne Bels",
   robots: {
     index: true,
+    googleBot: {
+      index: true,
+    },
   },
   openGraph: {
     title: "Zita Celis",
@@ -55,6 +63,11 @@ export const metadata = {
     description: "Photofolio",
     url: "https://www.zitacelis.art",
     images: [
+      {
+        url: "https://nextjs.org/og.png",
+        width: 800,
+        height: 600,
+      },
       {
         url: "blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60",
         width: 800,

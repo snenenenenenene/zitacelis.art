@@ -2,6 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 
 import { useEffect, useState } from "react";
+import CheckoutForm from "../components/CheckoutForm";
 
 export default function Contact() {
   const [showCopy, setShowCopy] = useState(false);
@@ -35,13 +36,13 @@ export default function Contact() {
           className="text-xl underline-offset-[4px] transition-all duration-500  hover:underline-offset-[2px] font-george cursor-pointer underline"
           onClick={() => {
             setShowCopy(true);
-            navigator.clipboard.writeText("zitacelis25@gmail.com");
+            navigator.clipboard.writeText("zita25celis@gmail.com");
             setTimeout(() => {
               setShowCopy(false);
             }, 2000);
           }}
         >
-          zitacelis25@gmail.com
+          zita25celis@gmail.com
         </a>
 
         <a
@@ -56,6 +57,7 @@ export default function Contact() {
         >
           my instagram
         </a>
+        <CheckoutForm />
       </section>
       <section className="w-full flex mt-auto sm:mt-0">
         <picture className="mx-auto w-full h-full rounded-xl overflow-hidden">

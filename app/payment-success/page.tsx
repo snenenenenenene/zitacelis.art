@@ -2,6 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Stripe from "stripe";
+import { formatter } from "../config/config";
 import inventory from "../data/products.json";
 export default function Success(context: any) {
   const sessionId = context.searchParams.session_id;
@@ -9,10 +10,6 @@ export default function Success(context: any) {
   const [session, setSession] = useState<TSession | null>(null);
   const [lineItems, setLineItems] = useState<any | null>(null);
 
-  const formatter = new Intl.NumberFormat("be-NL", {
-    style: "currency",
-    currency: "EUR",
-  });
   // const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
   // const session = stripe.checkout.sessions.retrieve(sessionId);
 

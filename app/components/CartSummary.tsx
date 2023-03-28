@@ -3,20 +3,20 @@
 import React, { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
-import { useShoppingCart } from "use-shopping-cart";
+import { formatter } from "../config/config";
 import { fetchPostJSON } from "../utils/api-helpers";
+import { useStore } from "../utils/store";
 
 const CartSummary = () => {
   const [loading, setLoading] = useState(false);
   const [cartEmpty, setCartEmpty] = useState(true);
-  const { formattedTotalPrice, cartCount, clearCart, cartDetails } =
-    useShoppingCart();
-  const formatter = new Intl.NumberFormat("be-NL", {
-    style: "currency",
-    currency: "EUR",
-  });
 
-  console.log(cartDetails);
+  const { cart, cartCount, clearCart, totalPrice } = useStore((state) => ({
+    cart: state.cart,
+    cartCount: state.cartCount,
+    clearCart: state.clearCart,
+    totalPrice: state.totalPrice,
+  }));
 
   useEffect(() => setCartEmpty(!cartCount), [cartCount]);
   const router = useRouter();
@@ -26,7 +26,7 @@ const CartSummary = () => {
     event.preventDefault();
     setLoading(true);
 
-    fetchPostJSON("/api/checkout_sessions/cart", cartDetails)
+    fetchPostJSON("/api/checkout_sessions/cart", cart)
       .then((res) => {
         router.push(res.url);
       })
@@ -38,28 +38,32 @@ const CartSummary = () => {
   return (
     <form
       onSubmit={handleCheckout}
-      className="font-george h-full flex flex-col"
+      className="font-george h-full flex flex-col shadow-2xl"
     >
-      <h2>Cart summary</h2>
-      <section className="w-full h-full">
-        {cartDetails &&
-          Object.values(cartDetails).map((item) => {
+      <h2 className="text-xl font-sunflower mb-4">Cart summary</h2>
+      <section className="w-full overflow-scroll h-full flex flex-col gap-y-8">
+        {cart.length > 0 &&
+          cart.map((item: any) => {
             return (
-              <div className="text-white flex" key={item.sku}>
-                <picture className="w-20 h-20  rounded">
-                  <img
-                    alt={"item-image"}
-                    src={item.image}
-                    className="w-20 h-20 object-cover overflow-hidden rounded"
-                  />
-                </picture>
+              <div className="text-white flex" key={item.id}>
+                {item.image && (
+                  <picture className="w-20 h-20  rounded">
+                    <img
+                      alt={"item-image"}
+                      src={`https://zita-website.pockethost.io/api/files/vjwax4elade9otn/${item.id}/${item.image}`}
+                      className="w-20 h-20 object-cover overflow-hidden rounded"
+                    />
+                  </picture>
+                )}
                 <section className="flex ml-4 flex-col gap-4">
-                  <p>{item.name}</p>
-                  <p>Qty: {item.quantity}</p>
+                  <p suppressHydrationWarning>{item.name}</p>
+                  <p suppressHydrationWarning>Qty: {item.quantity}</p>
                 </section>
                 <section className="flex text-end ml-auto flex-col gap-4">
-                  <p>{formatter.format(item.price / 100)}</p>
-                  <p>{item.formattedValue}</p>
+                  <p suppressHydrationWarning>
+                    {formatter.format(item.price / 100)}
+                  </p>
+                  <p suppressHydrationWarning>{item.formattedValue}</p>
                 </section>
               </div>
             );
@@ -70,18 +74,20 @@ const CartSummary = () => {
           <strong>Number of Items:</strong> {cartCount}
         </p>
         <p suppressHydrationWarning>
-          <strong>Total:</strong> {formattedTotalPrice}
+          <strong>Total:</strong> {formatter.format(totalPrice / 100)}
         </p>
       </section>
       <section className="flex justify-between mt-8">
         <button
           className="border-white border-2 rounded p-4"
           type="button"
+          suppressHydrationWarning
           onClick={clearCart}
         >
           Clear Cart
         </button>
         <button
+          suppressHydrationWarning
           className="border-white bg-white text-black border-2 rounded p-4"
           type="submit"
           disabled={cartEmpty || loading}

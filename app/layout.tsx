@@ -7,14 +7,61 @@ import "./globals.css";
 export const metadata = {
   title: "Zita Celis",
   generator: "Next.js",
+  category: "Photography",
+  description: "Photofolio",
+  icons: [
+    {
+      rel: "icon",
+      href: "assets/favicon.ico",
+      url: "assets/favicon.ico",
+    },
+  ],
+  twitter: {
+    card: "summary_large_image",
+    site: "https://www.zitacelis.art",
+    title: "zitacelis.art",
+    description: "Photofolio",
+    creator: "@zitacelis",
+    images: [
+      {
+        url: "blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
   applicationName: "Zita Celis",
-  keywords: ["Senne Bels", "Photography", "Portfolio"],
+  keywords: ["Zita Celis", "Senne Bels", "Photography", "Portfolio"],
   authors: [
     { name: "Zita Celis" },
     { name: "Senne Bels", url: "https://sennebels.xyz" },
   ],
   creator: "Zita Celis",
   publisher: "Senne Bels",
+  robots: {
+    index: true,
+  },
+  openGraph: {
+    title: "Zita Celis",
+    creators: ["Zita Celis", "Senne Bels"],
+    releaseDate: "2023-03-28",
+
+    countryName: "Belgium",
+    firstName: "Zita",
+    lastName: "Celis",
+    username: "zitacelis",
+    emails: "zita25celis@gmail.com",
+    tags: ["Photography", "Portfolio", "Zita Celis", "Senne Bels"],
+    description: "Photofolio",
+    url: "https://www.zitacelis.art",
+    images: [
+      {
+        url: "blob:https://vercel.com/f6cb8460-0d93-4f59-8fda-e484add0ea60",
+        width: 800,
+        height: 600,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -42,7 +89,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </Head>
       <body className="bg-dark-primary overflow-hidden relative p-[3rem] w-screen h-screen dark:bg-dark-primary text-light-secondary dark:text-dark-secondary">
-        <nav className="fixed md:justify-start justify-between  inset-0 w-screen h-[3rem] px-[3rem] items-center text-white text-3xl font-sunflower flex">
+        <nav className="fixed md:justify-start justify-between gap-x-4 inset-0 w-screen h-[3rem] px-[3rem] items-center text-white text-3xl font-sunflower flex">
           <Link
             href="/shop"
             className="hover:bg-white my-2 h-8 flex justify-center items-center px-8 py-3 rounded-xl hover:text-black transition-colors duration-500"

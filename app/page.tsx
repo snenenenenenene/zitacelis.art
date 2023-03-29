@@ -1,13 +1,10 @@
 "use client";
-import { AnimatePresence, motion, useAnimate } from "framer-motion";
 import Link from "next/link";
 import { useEffect } from "react";
 //@ts-ignore
 import { useStore } from "./utils/store";
 
 export default function Home() {
-  const [scope, animate] = useAnimate();
-
   const Img = ({ className, index }: { className: string; index: any }) => {
     return (
       <picture
@@ -38,28 +35,6 @@ export default function Home() {
 
   return (
     <>
-      {collections?.length === 0 && (
-        <AnimatePresence>
-          <motion.div
-            ref={scope}
-            initial={{ y: "0%" }}
-            exit={{
-              y: "100%",
-              transition: { duration: 20.5 },
-              display: "none",
-            }}
-            transition={{ duration: 100 }}
-            className={`${
-              collections?.length === 0 ? "hidden opacity-0" : "block"
-            } top-0 absolute left-0 w-full h-full z-50 bg-black`}
-          >
-            <h2 className="text-[8rem] absolute top-1/2 left-1/2 text-white -translate-x-1/2 -translate-y-1/2 z-[60] filter font-sunflower leading-[6rem] w-[35rem] md:w-[30rem] text-center flex justify-center items-center">
-              Zita Celis
-            </h2>
-          </motion.div>
-        </AnimatePresence>
-      )}
-
       <div className="text-[8rem] top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower fixed leading-[6rem] w-[35rem] md:w-[30rem] text-center flex justify-center items-center">
         Zita Celis
       </div>

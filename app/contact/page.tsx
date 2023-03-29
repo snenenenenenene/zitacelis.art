@@ -19,9 +19,9 @@ export default function Contact() {
 
   return (
     <motion.main
-      initial={{ y: "10%", opacity: 0 }}
+      initial={{ y: 10, opacity: 0 }}
       animate={{ y: "0%", opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.5 }}
       className="w-full p-10 text-black flex sm:flex-row flex-col"
     >
       {/* <motion.div

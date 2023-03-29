@@ -88,7 +88,11 @@ const CartSummary = () => {
         </button>
         <button
           suppressHydrationWarning
-          className="border-white bg-white text-black border-2 rounded p-4"
+          className={` ${
+            cartEmpty
+              ? "bg-black border-white text-white "
+              : "border-white bg-white text-black"
+          }  border-2 rounded p-4`}
           type="submit"
           disabled={cartEmpty || loading}
         >

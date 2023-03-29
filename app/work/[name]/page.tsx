@@ -1,6 +1,6 @@
 "use client";
 import { useStore } from "@/app/utils/store";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 export default function Page(context: any) {
   const name = context.params.name;
@@ -14,28 +14,11 @@ export default function Page(context: any) {
   }));
 
   useEffect(() => {
-    if (isNaN(collection)) {
-      fetch();
-    }
+    fetch();
   }, []);
 
   return (
     <main className="flex flex-col overflow-scroll bg-black rounded-xl h-full w-full font-sunflower">
-      <AnimatePresence>
-        {collection && Object.keys(collection).length === 0 && (
-          <motion.div
-            initial={{ y: "13%" }}
-            animate={{ y: "100%" }}
-            exit={{
-              y: "100%",
-              opacity: 0,
-              transition: { duration: 0.2 },
-            }}
-            transition={{ duration: 0.5 }}
-            className={`top-0 fixed left-0 w-screen h-screen z-50 bg-black`}
-          />
-        )}
-      </AnimatePresence>
       {collection && (
         <>
           <nav className="flex items-center justify-center w-full pb-8 bg-black text-white">
@@ -47,7 +30,12 @@ export default function Page(context: any) {
               )}
             </h1>
           </nav>
-          <section className="w-full pt-10 md:pt-20 bg-white rounded-xl pb-20 px-10 md:px-20 grid md:grid-cols-3 grid-cols-1 gap-6">
+          <motion.section
+            initial={{ y: 10, opacity: 0 }}
+            animate={{ y: "0%", opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="w-full pt-10 md:pt-20 bg-white rounded-xl pb-20 px-10 md:px-20 grid md:grid-cols-3 grid-cols-1 gap-6"
+          >
             {Object?.keys(collection).length !== 0 ? (
               collection?.expand?.images?.map((image: any, index: number) => (
                 <picture
@@ -68,7 +56,7 @@ export default function Page(context: any) {
             ) : (
               <section></section>
             )}
-          </section>
+          </motion.section>
           {showModal && (
             <div
               onClick={() => {

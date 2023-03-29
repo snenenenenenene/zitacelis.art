@@ -81,6 +81,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en">
       <body className="bg-dark-primary overflow-hidden relative p-[3rem] w-screen h-screen dark:bg-dark-primary text-light-secondary dark:text-dark-secondary">
         <nav className="fixed md:justify-start justify-between gap-x-4 inset-0 w-screen h-[3rem] px-[3rem] items-center text-white text-3xl font-sunflower flex">
+          {/* //TODO: ADD A CATEGORIES MENU THAT SLIDES OPEN A SIDEBAR WITH ALL POSSIBLE CATEGORIES OF COLLECTIONS */}
           <Link
             href="/shop"
             className="hover:bg-white my-2 h-8 flex justify-center items-center px-8 py-3 rounded-xl hover:text-black transition-colors duration-500"

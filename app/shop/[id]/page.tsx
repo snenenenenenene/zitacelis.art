@@ -22,8 +22,6 @@ export default function Product(context: any) {
       ] || state.products[state.products.length - 1],
   }));
 
-  console.log(nextProduct);
-
   const { addToCart } = useStore((state: any) => ({
     cart: state.cart,
     addToCart: state.addToCart,
@@ -66,13 +64,24 @@ export default function Product(context: any) {
                 {product?.description || "No description"}
               </h2>
               <button
-                className="flex justify-center items-center text-3xl hover:bg-white border-2 border-black hover:text-black transition-all hover:scale-105 duration-500 bg-black text-white font-sunflower rounded-xl h-[5rem] mt-auto"
+                disabled={product.soldOut}
+                className={`${
+                  product.soldOut
+                    ? "bg-white text-black"
+                    : "bg-black text-white hover:bg-white  hover:text-black"
+                } flex justify-center items-center border-2 text-3xl  border-black  transition-all hover:scale-105 duration-500  font-sunflower rounded-xl h-[5rem] mt-auto`}
                 onClick={() => {
                   openCart || toggleOpenCart();
                   addToCart(product);
                 }}
               >
-                Add to Cart <GiCartwheel className="text-4xl ml-4" />
+                {product.soldOut ? (
+                  <>Sold Out</>
+                ) : (
+                  <>
+                    Add to Cart <GiCartwheel className="text-4xl ml-4" />
+                  </>
+                )}
               </button>
             </div>
             <div className="h-full flex w-full">

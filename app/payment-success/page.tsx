@@ -157,21 +157,21 @@ export default function Success(context: any) {
             <div className="flex items-center justify-center w-full pl-10">
               <p>
                 Subtotal:
-                {formatter.format(session.amount_subtotal! / 100)}
+                {formatter.format(session?.amount_subtotal! / 100)}
               </p>
               <p>
                 Discount:
-                {formatter.format(session.total_details?.amount_discount!)}
+                {formatter.format(session?.total_details?.amount_discount!)}
               </p>
               <p>
                 Tax:
-                {formatter.format(session.total_details?.amount_tax!)}
+                {formatter.format(session?.total_details?.amount_tax!)}
               </p>
               <p>
                 Shipping:
-                {formatter.format(session.total_details?.amount_shipping!)}
+                {formatter.format(session?.total_details?.amount_shipping!)}
               </p>
-              <p>Total: {formatter.format(session.amount_total! / 100)}</p>
+              <p>Total: {formatter.format(session?.amount_total! / 100)}</p>
             </div>
             <button className=" bg-black w-40 m-6 ml-auto h-20 hover:scale-105 font-sunflower text-white rounded-xl">
               To Shop

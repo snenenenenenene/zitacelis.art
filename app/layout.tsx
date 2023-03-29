@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ReactNode } from "react";
 import { GiBleedingEye } from "react-icons/gi";
 import "./globals.css";
-
+//TODO: Cleanup all code
 export const metadata = {
   title: "Zita Celis",
   generator: "Next.js",

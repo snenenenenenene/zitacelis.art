@@ -20,6 +20,9 @@ export async function POST(request: Request) {
     const ids = Object.values(res)
       .map((item: any) => item.id)
       .join(",");
+    const titles = Object.values(res)
+      .map((item: any) => item.title)
+      .join(",");
     const images = Object.values(res)
       .map((item: any) => item.image)
       .join(",");
@@ -44,6 +47,7 @@ export async function POST(request: Request) {
       },
       line_items: line_items,
       metadata: {
+        titles: titles,
         ids: ids,
         images: images,
         amount_totals: amount_totals,

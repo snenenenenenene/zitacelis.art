@@ -33,6 +33,7 @@ export default function Success(context: any) {
           res.data.metadata.ids.split(",").map((_id: any, i: number) => {
             return {
               id: res.data.metadata.ids.split(",")[i],
+              title: res.data.metadata.titles.split(",")[i],
               image: res.data.metadata.images.split(",")[i],
               quantity: res.data.metadata.quantities.split(",")[i],
               unit_amount: res.data.metadata.unit_amounts.split(",")[i],
@@ -63,6 +64,7 @@ export default function Success(context: any) {
   }, []);
 
   useEffect(() => {
+    console.log(lineItems);
     lineItems?.forEach((product: any) => {
       pb.collection("products").update(product.id, {
         soldOut: true,
@@ -71,39 +73,41 @@ export default function Success(context: any) {
   }, [lineItems]);
 
   return (
-    <div className="text-9xl font-sunflower flex text-black h-full w-full">
+    <div className="text-9xl font-sunflower flex sm:flex-row flex-col text-black h-full w-full">
       {session && (
         <>
-          <div className="text-xl p-4 font-george w-1/2 border-r-2 border-black h-full flex flex-col">
-            <span>
-              <h2 className="font-sunflower text-2xl">Name</h2>
-              <p>{session?.customer_details?.name}</p>
-            </span>
-            <section>
-              <h2 className="font-sunflower text-2xl">Contact</h2>
-              <span className="flex gap-x-8">
-                <p>{session?.customer_details?.email}</p>
-
-                <p>{session?.customer_details?.phone}</p>
+          <div className="text-xl p-4 font-george w-full border-r-2 border-black h-full flex flex-row sm:flex-col">
+            <article className="flex flex-col">
+              <span>
+                <h2 className="font-sunflower text-2xl">Name</h2>
+                <p>{session?.customer_details?.name}</p>
               </span>
-            </section>
+              <section>
+                <h2 className="font-sunflower text-2xl">Contact</h2>
+                <span className="flex gap-x-8">
+                  <p>{session?.customer_details?.email}</p>
 
-            <section>
-              <p className="font-sunflower text-2xl">Shipping Address:</p>
-              <p>{session?.customer_details?.address?.line1}</p>
-              <span className="flex">
-                <p>{session?.customer_details?.address?.city},&nbsp;</p>
-                <p>{session?.customer_details?.address?.postal_code}</p>
-              </span>
-              <p>{session?.customer_details?.address?.country}</p>
-            </section>
-            <section className="w-full h-[30rem] border-2 border-black mt-auto overflow-hidden">
+                  <p>{session?.customer_details?.phone}</p>
+                </span>
+              </section>
+
+              <section>
+                <p className="font-sunflower text-2xl">Shipping Address:</p>
+                <p>{session?.customer_details?.address?.line1}</p>
+                <span className="flex">
+                  <p>{session?.customer_details?.address?.city},&nbsp;</p>
+                  <p>{session?.customer_details?.address?.postal_code}</p>
+                </span>
+                <p>{session?.customer_details?.address?.country}</p>
+              </section>
+            </article>
+            <section className="w-full h-[30rem] border-2 border-black sm:mt-auto overflow-hidden">
               {coordinates && <Map coordinates={coordinates} />}
             </section>
           </div>
 
           {lineItems && (
-            <div className="text-xl flex-col overflow-hidden font-george border-t-2 border-black w-1/2 flex h-full">
+            <div className="text-xl flex-col overflow-scroll font-george border-t-2 border-black w-full flex h-full">
               <section className="h-full flex overflow-scroll">
                 {lineItems.map((item: any) => {
                   return (
@@ -134,27 +138,40 @@ export default function Success(context: any) {
                   );
                 })}
               </section>
-              <section className="w-full flex border-t-2 border-black">
-                <div className="flex items-center justify-center w-full pl-10">
-                  <p>
-                    Subtotal:
+              <section className="w-full flex sm:flex-row px-8 sm:px-0 flex-col border-t-2 border-black">
+                <div className="flex items-center sm:justify-center justify-between w-full pl-10">
+                  <span className="flex flex-col">
+                    <p className="font-sunflower">Subtotal:</p>
                     {formatter.format(session?.amount_subtotal! / 100)}
-                  </p>
-                  <p>
-                    Discount:
-                    {formatter.format(session?.total_details?.amount_discount!)}
-                  </p>
-                  <p>
-                    Tax:
-                    {formatter.format(session?.total_details?.amount_tax!)}
-                  </p>
-                  <p>
-                    Shipping:
-                    {formatter.format(session?.total_details?.amount_shipping!)}
-                  </p>
-                  <p>Total: {formatter.format(session?.amount_total! / 100)}</p>
+                  </span>
+                  <span className="flex flex-col">
+                    <p className="font-sunflower">Discount:</p>
+                    <p>
+                      {formatter.format(
+                        session?.total_details?.amount_discount!
+                      )}
+                    </p>
+                  </span>
+                  <span className="flex flex-col">
+                    <p className="font-sunflower">Tax:</p>
+                    <p>
+                      {formatter.format(session?.total_details?.amount_tax!)}
+                    </p>
+                  </span>
+                  <span className="flex flex-col">
+                    <h2 className="font-sunflower">Shipping:</h2>
+                    <p>
+                      {formatter.format(
+                        session?.total_details?.amount_shipping!
+                      )}
+                    </p>
+                  </span>
+                  <span className="flex flex-col">
+                    <p className="font-sunflower">Total: </p>
+                    <p>{formatter.format(session?.amount_total! / 100)}</p>
+                  </span>
                 </div>
-                <button className=" bg-black w-40 m-6 ml-auto h-20 hover:scale-105 font-sunflower text-white rounded-xl">
+                <button className=" bg-black w-full sm:w-40 m-6 ml-auto h-20 hover:scale-105 font-sunflower text-white rounded-xl">
                   To Shop
                 </button>
               </section>

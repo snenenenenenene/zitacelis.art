@@ -39,7 +39,7 @@ export default function Product(context: any) {
   //TODO: WHEN PRODUCT IS A PHOTO LET PEOPLE CHOOSE BETWEEN PRINTING A4, A5 AND LET THEM KNOW THEY GET A DIGITAL COPY AS WELL
 
   return (
-    <div className="flex text-black w-full h-full">
+    <div className="flex md:flex-row flex-col text-black w-full h-full">
       {product && (
         <>
           <picture className="w-full  p-20 bg-black h-full border-r-2 border-black overflow-hidden">

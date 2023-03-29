@@ -1,4 +1,8 @@
-export function formatCart(body: any) {
+import Stripe from "stripe";
+
+export function formatCart(
+  body: any
+): Stripe.Checkout.SessionCreateParams.LineItem[] {
   return Object.values(body).map((item: any) => ({
     quantity: item.quantity,
     price_data: {

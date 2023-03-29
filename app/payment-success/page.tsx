@@ -1,24 +1,21 @@
+/* eslint-disable no-unused-vars */
 "use client";
+import { TSession } from "@/types/types";
 import axios from "axios";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import PocketBase from "pocketbase";
 import { useEffect, useState } from "react";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
-import Stripe from "stripe";
+import Map from "../components/Map";
 import { formatter } from "../config/config";
 import { useStore } from "../utils/store";
 
-import PocketBase from "pocketbase";
-
 export default function Success(context: any) {
-  L.Marker.prototype.options.icon = L.icon({
-    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
-  });
   const pb = new PocketBase(
     process.env.NEXT_PUBLIC_POCKET_BASE_URL
   ).autoCancellation(false);
-  const sessionId = context.searchParams.session_id;
-  type TSession = Stripe.Response<Stripe.Checkout.Session>;
+
+  const sessionId = context.searchParams.session_id || null;
+
   const [session, setSession] = useState<TSession | null>(null);
   const [lineItems, setLineItems] = useState<any | null>(null);
 
@@ -76,107 +73,94 @@ export default function Success(context: any) {
   return (
     <div className="text-9xl font-sunflower flex text-black h-full w-full">
       {session && (
-        <div className="text-xl p-4 font-george w-1/2 border-r-2 border-black h-full flex flex-col">
-          <span>
-            <h2 className="font-sunflower text-2xl">Name</h2>
-            <p>{session?.customer_details?.name}</p>
-          </span>
-          <section>
-            <h2 className="font-sunflower text-2xl">Contact</h2>
-            <span className="flex gap-x-8">
-              <p>{session?.customer_details?.email}</p>
-
-              <p>{session?.customer_details?.phone}</p>
+        <>
+          <div className="text-xl p-4 font-george w-1/2 border-r-2 border-black h-full flex flex-col">
+            <span>
+              <h2 className="font-sunflower text-2xl">Name</h2>
+              <p>{session?.customer_details?.name}</p>
             </span>
-          </section>
+            <section>
+              <h2 className="font-sunflower text-2xl">Contact</h2>
+              <span className="flex gap-x-8">
+                <p>{session?.customer_details?.email}</p>
 
-          <section>
-            <p className="font-sunflower text-2xl">Shipping Address:</p>
-            <p>{session?.customer_details?.address?.line1}</p>
-            <span className="flex">
-              <p>{session?.customer_details?.address?.city},&nbsp;</p>
-              <p>{session?.customer_details?.address?.postal_code}</p>
-            </span>
-            <p>{session?.customer_details?.address?.country}</p>
-          </section>
-          <section className="w-full h-[30rem] border-2 border-black mt-auto overflow-hidden">
-            {coordinates && (
-              <MapContainer
-                className="w-full h-full "
-                // @ts-ignore
-                center={[coordinates.lat, coordinates.lon]}
-                zoom={12}
-              >
-                <TileLayer
-                  // @ts-ignore
-                  attribution='Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://stamen-tiles-{s}.a.ssl.fastly.net/toner/{z}/{x}/{y}{r}.png"
-                />
-                <Marker position={[coordinates.lat, coordinates.lon]}>
-                  <Popup>
-                    A pretty CSS3 popup. <br /> Easily customizable.
-                  </Popup>
-                </Marker>
-              </MapContainer>
-            )}
-          </section>
-        </div>
-      )}
-      {lineItems && (
-        <div className="text-xl flex-col overflow-hidden font-george border-t-2 border-black w-1/2 flex h-full">
-          <section className="h-full flex overflow-scroll">
-            {lineItems.map((item: any) => {
-              return (
-                <div
-                  key={item.name}
-                  className="flex p-4 h-[12rem] items-center w-full border-b-2 border-black"
-                >
-                  <picture className="h-full mr-8">
-                    <img
-                      alt="productImage"
-                      src={`https://zita-website.pockethost.io/api/files/vjwax4elade9otn/${item?.id}/${item?.image}`}
-                      className="h-full object-contain"
-                    />
-                  </picture>
-                  <section className="flex flex-col h-full  py-2 ">
-                    <p className="text-black font-sunflower">{item.title}</p>
-                    <p className="mt-auto">Qty: {item.quantity}</p>
-                  </section>
-                  <section className="flex ml-auto h-full flex-col py-2 text-end">
-                    <p>{formatter.format(item.unit_amount / 100)}</p>
-                    <p className="mt-auto">
-                      Total: {formatter.format(item.amount_total / 100)}
-                    </p>
-                  </section>
+                <p>{session?.customer_details?.phone}</p>
+              </span>
+            </section>
+
+            <section>
+              <p className="font-sunflower text-2xl">Shipping Address:</p>
+              <p>{session?.customer_details?.address?.line1}</p>
+              <span className="flex">
+                <p>{session?.customer_details?.address?.city},&nbsp;</p>
+                <p>{session?.customer_details?.address?.postal_code}</p>
+              </span>
+              <p>{session?.customer_details?.address?.country}</p>
+            </section>
+            <section className="w-full h-[30rem] border-2 border-black mt-auto overflow-hidden">
+              {coordinates && <Map coordinates={coordinates} />}
+            </section>
+          </div>
+
+          {lineItems && (
+            <div className="text-xl flex-col overflow-hidden font-george border-t-2 border-black w-1/2 flex h-full">
+              <section className="h-full flex overflow-scroll">
+                {lineItems.map((item: any) => {
+                  return (
+                    <div
+                      key={item.name}
+                      className="flex p-4 h-[12rem] items-center w-full border-b-2 border-black"
+                    >
+                      <picture className="h-full mr-8">
+                        <img
+                          alt="productImage"
+                          src={`https://zita-website.pockethost.io/api/files/vjwax4elade9otn/${item?.id}/${item?.image}`}
+                          className="h-full object-contain"
+                        />
+                      </picture>
+                      <section className="flex flex-col h-full  py-2 ">
+                        <p className="text-black font-sunflower">
+                          {item.title}
+                        </p>
+                        <p className="mt-auto">Qty: {item.quantity}</p>
+                      </section>
+                      <section className="flex ml-auto h-full flex-col py-2 text-end">
+                        <p>{formatter.format(item.unit_amount / 100)}</p>
+                        <p className="mt-auto">
+                          Total: {formatter.format(item.amount_total / 100)}
+                        </p>
+                      </section>
+                    </div>
+                  );
+                })}
+              </section>
+              <section className="w-full flex border-t-2 border-black">
+                <div className="flex items-center justify-center w-full pl-10">
+                  <p>
+                    Subtotal:
+                    {formatter.format(session?.amount_subtotal! / 100)}
+                  </p>
+                  <p>
+                    Discount:
+                    {formatter.format(session?.total_details?.amount_discount!)}
+                  </p>
+                  <p>
+                    Tax:
+                    {formatter.format(session?.total_details?.amount_tax!)}
+                  </p>
+                  <p>
+                    Shipping:
+                    {formatter.format(session?.total_details?.amount_shipping!)}
+                  </p>
+                  <p>Total: {formatter.format(session?.amount_total! / 100)}</p>
                 </div>
-              );
-            })}
-          </section>
-          <section className="w-full flex border-t-2 border-black">
-            <div className="flex items-center justify-center w-full pl-10">
-              <p>
-                Subtotal:
-                {formatter.format(session?.amount_subtotal! / 100)}
-              </p>
-              <p>
-                Discount:
-                {formatter.format(session?.total_details?.amount_discount!)}
-              </p>
-              <p>
-                Tax:
-                {formatter.format(session?.total_details?.amount_tax!)}
-              </p>
-              <p>
-                Shipping:
-                {formatter.format(session?.total_details?.amount_shipping!)}
-              </p>
-              <p>Total: {formatter.format(session?.amount_total! / 100)}</p>
+                <button className=" bg-black w-40 m-6 ml-auto h-20 hover:scale-105 font-sunflower text-white rounded-xl">
+                  To Shop
+                </button>
+              </section>
             </div>
-            <button className=" bg-black w-40 m-6 ml-auto h-20 hover:scale-105 font-sunflower text-white rounded-xl">
-              To Shop
-            </button>
-          </section>
-        </div>
+          )}
+        </>
       )}
     </div>
   );

@@ -1,3 +1,5 @@
+import Stripe from "stripe";
+
 export interface Product {
   id: string;
   title: string;
@@ -8,3 +10,5 @@ export interface Product {
   soldOut?: boolean;
   quantity: number;
 }
+
+export type TSession = Stripe.Response<Stripe.Checkout.Session>;

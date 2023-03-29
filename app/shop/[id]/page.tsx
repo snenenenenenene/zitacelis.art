@@ -6,6 +6,7 @@ import { useState } from "react";
 import { GiCartwheel } from "react-icons/gi";
 
 export default function Product(context: any) {
+  // TODO:CALCULATE SHIPPING + DISCOUNT
   const { id } = context.params;
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState<any>({});

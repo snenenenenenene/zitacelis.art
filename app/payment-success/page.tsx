@@ -9,15 +9,14 @@ import { formatter } from "../config/config";
 import { useStore } from "../utils/store";
 
 import PocketBase from "pocketbase";
-const pb = new PocketBase(
-  process.env.NEXT_PUBLIC_POCKET_BASE_URL
-).autoCancellation(false);
-
-L.Marker.prototype.options.icon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
-});
 
 export default function Success(context: any) {
+  L.Marker.prototype.options.icon = L.icon({
+    iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
+  });
+  const pb = new PocketBase(
+    process.env.NEXT_PUBLIC_POCKET_BASE_URL
+  ).autoCancellation(false);
   const sessionId = context.searchParams.session_id;
   type TSession = Stripe.Response<Stripe.Checkout.Session>;
   const [session, setSession] = useState<TSession | null>(null);

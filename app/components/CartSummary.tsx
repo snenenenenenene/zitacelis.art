@@ -38,7 +38,7 @@ const CartSummary = () => {
   return (
     <form
       onSubmit={handleCheckout}
-      className="font-george h-full flex flex-col shadow-2xl"
+      className="font-george h-full flex w-full flex-col shadow-2xl"
     >
       <h2 className="text-xl font-sunflower mb-4">Cart summary</h2>
       <section className="w-full overflow-scroll h-full flex flex-col gap-y-8">

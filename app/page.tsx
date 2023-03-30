@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useEffect } from "react";
+import Logo from "./components/Logo";
 //@ts-ignore
 import { useStore } from "./utils/store";
 
@@ -35,8 +36,8 @@ export default function Home() {
 
   return (
     <>
-      <div className="text-[8rem] top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower fixed leading-[6rem] w-[35rem] md:w-[30rem] text-center flex justify-center items-center">
-        Zita Celis
+      <div className=" hover top-1/2 left-1/2 text-black -translate-x-1/2 -translate-y-1/2 z-20 filter font-sunflower fixed leading-[6rem] w-[35rem] md:w-[20rem] text-center flex justify-center items-center">
+        <Logo />
       </div>
       <Img
         data-name="cosplay"
@@ -50,7 +51,7 @@ export default function Home() {
       />
       <Img
         data-name="misc"
-        className="w-[18rem] md:w-[25rem] h-[15rem] md:h-[15rem] bottom-[2rem] left-[18rem] md:left-[2rem] lg:left-[3rem] xl:left-[30rem]"
+        className="w-[18rem] md:w-[25rem] h-[15rem] md:h-[15rem] xl:h-[12rem] bottom-[2rem] left-[18rem] md:left-[2rem] lg:left-[3rem] xl:left-[42rem]"
         index={4}
       />
       <Img

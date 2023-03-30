@@ -29,18 +29,20 @@ export default function Success(context: any) {
       .get(`/api/session/${sessionId}`)
       .then((res) => {
         setSession(res.data);
-        setLineItems(
-          res.data.metadata.ids.split(",").map((_id: any, i: number) => {
-            return {
-              id: res.data.metadata.ids.split(",")[i],
-              title: res.data.metadata.titles.split(",")[i],
-              image: res.data.metadata.images.split(",")[i],
-              quantity: res.data.metadata.quantities.split(",")[i],
-              unit_amount: res.data.metadata.unit_amounts.split(",")[i],
-              amount_total: res.data.metadata.amount_totals.split(",")[i],
-            };
-          })
-        );
+        console.log(res.data);
+        res.data.metadata &&
+          setLineItems(
+            res?.data?.metadata?.ids?.split(",").map((_id: any, i: number) => {
+              return {
+                id: res.data.metadata.ids.split(",")[i],
+                title: res.data.metadata.titles.split(",")[i],
+                image: res.data.metadata.images.split(",")[i],
+                quantity: res.data.metadata.quantities.split(",")[i],
+                unit_amount: res.data.metadata.unit_amounts.split(",")[i],
+                amount_total: res.data.metadata.amount_totals.split(",")[i],
+              };
+            })
+          );
 
         axios
           .get(
@@ -139,30 +141,24 @@ export default function Success(context: any) {
                 })}
               </section>
               <section className="w-full flex sm:flex-row px-8 sm:px-0 flex-col border-t-2 border-black">
-                <div className="flex items-center sm:justify-center justify-between w-full pl-10">
+                <div className="flex items-center  justify-between w-full pl-10 sm:px-3">
                   <span className="flex flex-col">
                     <p className="font-sunflower">Subtotal:</p>
                     {formatter.format(session?.amount_subtotal! / 100)}
                   </span>
                   <span className="flex flex-col">
-                    <p className="font-sunflower">Discount:</p>
-                    <p>
-                      {formatter.format(
-                        session?.total_details?.amount_discount!
-                      )}
-                    </p>
-                  </span>
-                  <span className="flex flex-col">
                     <p className="font-sunflower">Tax:</p>
                     <p>
-                      {formatter.format(session?.total_details?.amount_tax!)}
+                      {formatter.format(
+                        session?.total_details?.amount_tax! / 100
+                      )}
                     </p>
                   </span>
                   <span className="flex flex-col">
                     <h2 className="font-sunflower">Shipping:</h2>
                     <p>
                       {formatter.format(
-                        session?.total_details?.amount_shipping!
+                        session?.total_details?.amount_shipping! / 100
                       )}
                     </p>
                   </span>

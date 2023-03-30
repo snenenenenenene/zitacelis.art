@@ -39,7 +39,10 @@ const CheckoutForm = () => {
   };
 
   return (
-    <form className="flex mt-auto text-xl w-full pr-10" onSubmit={handleSubmit}>
+    <form
+      className="flex mt-auto text-xl md:mb-0 mb-10 w-full pr-10"
+      onSubmit={handleSubmit}
+    >
       <CustomDonationInput
         className="border-2 border-black relative overflow-hidden w-full flex justify-center items-center text-center rounded-l-xl"
         name={"customDonation"}

@@ -43,8 +43,33 @@ export async function POST(request: Request) {
       billing_address_collection: "auto",
       mode: "payment",
       shipping_address_collection: {
-        allowed_countries: ["BE", "FR", "GB", "IE", "NL", "LU"],
+        allowed_countries: ["BE", "NL", "LU"],
       },
+      automatic_tax: {
+        enabled: true,
+      },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: "fixed_amount",
+            fixed_amount: {
+              amount: 500,
+              currency: "eur",
+            },
+            display_name: "Next day air",
+            delivery_estimate: {
+              minimum: {
+                unit: "business_day",
+                value: 1,
+              },
+              maximum: {
+                unit: "business_day",
+                value: 5,
+              },
+            },
+          },
+        },
+      ],
       line_items: line_items,
       metadata: {
         titles: titles,

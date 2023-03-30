@@ -35,7 +35,7 @@ export default function Contact() {
         transition={{ duration: 0.5 }}
         className={`top-0 fixed left-0 w-screen h-screen z-50 bg-black`}
       /> */}
-      <section className="flex flex-col w-full">
+      <section className="flex flex-col h-full w-full">
         <h1 className="text-4xl font-sunflower mb-4">Contact me</h1>
         <a
           className="text-xl underline-offset-[4px] transition-all duration-500  hover:underline-offset-[2px] font-george cursor-pointer underline"
@@ -68,7 +68,7 @@ export default function Contact() {
         <picture className="mx-auto w-full h-full rounded-xl overflow-hidden">
           <img
             alt="me"
-            src="/assets/2.jpeg"
+            src="/assets/me.jpeg"
             className="w-full h-full object-cover filter grayscale hover:filter-none transition-all duration-1000"
           />
         </picture>
